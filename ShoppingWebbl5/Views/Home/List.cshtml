@@ -1,0 +1,198 @@
+﻿@*@model List<ShoppingWebbl5.Models.Product>*@
+@model IEnumerable<ShoppingWebbl5.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Cửa hàng</h4>
+                    <div class="breadcrumb__links">
+                        <a href="./index.html">Trang chủ</a>
+                        <span>Cửa hàng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Thể loại</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <li><a href="#">Áo (20)</a></li>
+                                                <li><a href="#">Quần (20)</a></li>
+                                                <li><a href="#">Giày (20)</a></li>
+                                                <li><a href="#">Kính mắt (20)</a></li>
+                                                <li><a href="#">Thắt lưng (20)</a></li>
+                                                <li><a href="#">Phụ kiện (20)</a></li>
+                                                <li><a href="#">Đồng hồ (20)</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseTwo">Thương hiệu</a>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__brand">
+                                            <ul>
+                                                <li><a href="#">Louis Vuitton</a></li>
+                                                <li><a href="#">Chanel</a></li>
+                                                <li><a href="#">Hermes</a></li>
+                                                <li><a href="#">Gucci</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseThree">Lọc giá</a>
+                                </div>
+                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__price">
+                                            <ul>
+                                                <li><a href="#">0 - 200đ</a></li>
+                                                <li><a href="#">200 - 300đ</a></li>
+                                                <li><a href="#">300 - 400đ</a></li>
+                                                <li><a href="#">400đ - 500đ</a></li>
+                                                <li><a href="#">Trên 500đ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Hiển thị 1-12 trong số 126 kết quả</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__right">
+                                <p>Sắp xếp theo giá:</p>
+                                <select>
+                                    <option value="">Thấp đến cao</option>
+                                    <option value="">Cao đến thấp</option>
+                                    <option value="">0 - 200đ</option>
+                                    <option value="">200 - 300đ</option>
+                                    <option value="">300 - 400đ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (Product product in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="@product.Image">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="~/img/icon/heart.png" alt=""></a></li>
+                                        <li>
+                                            <a href="#"><img src="~/img/icon/compare.png" alt=""></a>
+                                        </li>
+                                        <li><a href="./shop-details.html"><img src="~/img/icon/search.png" alt=""></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>@product.ProductName</h6>
+                                    <a href="/Home/Detail/@product.Id" class="add-cart">+ Thêm vào giỏ hàng</a>
+                                    <div class="rating">
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <h5>$@product.Price</h5>
+                                    <div class="product__color__select">
+                                        <label for="pc-4">
+                                            <input type="radio" id="pc-4">
+                                        </label>
+                                        <label class="active black" for="pc-5">
+                                            <input type="radio" id="pc-5">
+                                        </label>
+                                        <label class="grey" for="pc-6">
+                                            <input type="radio" id="pc-6">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__pagination">
+                            @{
+                                int numberPage = (int)ViewBag.numberPage;
+                                int pageCurrent = ViewBag.pageCurrent;
+
+                                if (pageCurrent > 1)
+                                {
+                                    int prePage = pageCurrent - 1;
+                                    <a class="fa fa-angle-double-left" href="?page=@prePage"></a>
+                                }
+
+                                int i;
+                                for (i = 1; i < numberPage; i++)
+                                {
+                                    if (i == pageCurrent)
+                                    {
+                                        <a class="active" href="?page=@i">@i</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="?page=@i">@i</a>
+                                    }
+                                }
+
+                                if (pageCurrent >= 1 && pageCurrent < numberPage)
+                                {
+                                    int nextPage = pageCurrent + 1;
+                                    <a class="fa fa-angle-double-right" href="?page=@nextPage"></a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

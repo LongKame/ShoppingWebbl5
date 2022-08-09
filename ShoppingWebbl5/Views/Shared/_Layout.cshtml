@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShoppingWebbl5</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/magnific-popup.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/nice-select.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css" media="screen">
+</head>
+<body>
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="header__top__left">
+                            <p>Giao hàng miễn phí, hoàn trả trong 30 ngày hoặc đảm bảo hoàn lại tiền</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="header__top__right">
+                            <div class="header__top__links">
+                                <a href="./login.html">Đăng nhập</a>
+                                <a href="./register.html">Đăng ký</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Trang chủ</a></li>
+                            <li><a href="./shop.html">Cửa hàng</a></li>
+                            <li>
+                                <a href="#">Trang</a>
+                                <ul class="dropdown">
+                                    <li><a href="./about.html">Giới thiệu</a></li>
+                                    <!-- <li><a href="./shop-details.html">Chi tiết cửa hàng</a></li> -->
+                                    <li><a href="./shopping-cart.html">Giỏ hàng</a></li>
+                                    <li><a href="./checkout.html">Thanh toán</a></li>
+                                    <!-- <li><a href="./blog-details.html">Tin tức</a></li> -->
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Tin tức</a></li>
+                            <li><a href="./contact.html">Liên hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__nav__option">
+                        <a href="#" class="search-switch"><img src="~/img/icon/search.png" alt=""></a>
+                        <a href="#"><img src="~/img/icon/heart.png" alt=""></a>
+                        <a href="./shopping-cart.html"><img src="~/img/icon/cart.png" alt=""> <span>0</span></a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @*@section Footer
+        {
+                <footer>...</footer>
+            }*@
+    <div class="bodyWrap">
+        <footer class="footer" style="position:relative">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer__about">
+                            <div class="footer__logo">
+                                <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            </div>
+                            <p>Khách hàng là trọng tâm của mô hình kinh doanh độc đáo của chúng tôi, bao gồm cả thiết kế.</p>
+                            <a href="#"><img src="img/payment.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Mua sắm</h6>
+                            <ul>
+                                <li><a href="#">Cửa hàng quần áo </a></li>
+                                <li><a href="#">Xu hướng giày</a></li>
+                                <li><a href="#">Phụ kiện</a></li>
+                                <li><a href="#">Giảm giá</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Mua sắm</h6>
+                            <ul>
+                                <li><a href="#">Liên hệ</a></li>
+                                <li><a href="#">Phương thức thanh toán</a></li>
+                                <li><a href="#">Vận chuyển</a></li>
+                                <li><a href="#">Trả lại & Trao đổi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>@*Tin tức mới*@</h6>
+                            <div class="footer__newslatter">
+                                @*<p>Hãy là người đầu tiên biết về hàng mới xuất hiện, xem sách, bán hàng và quảng cáo!</p>*@
+                                <form action="#">
+                                    <input type="text" placeholder="Email của bạn">
+                                    <button type="submit"><span class="icon_mail_alt"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="footer__copyright__text">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            <p>
+                                Copyright ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                All rights reserved
+                                by <a href="#" target="_blank">Nguyen Thanh Long</a>
+                            </p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section End -->
+        <!-- Search Begin -->
+        <div class="search-model">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div class="search-close-switch">+</div>
+                <form class="search-model-form">
+                    <input type="text" id="search-input" placeholder="Search here.....">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    <script class="u-script" type="text/javascript" src="~/js/jquery-3.3.1.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/jquery.nice-select.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/jquery.nicescroll.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/jquery.magnific-popup.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/jquery.countdown.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/jquery.slicknav.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/mixitup.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/owl.carousel.min.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/main.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

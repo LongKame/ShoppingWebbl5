@@ -1,0 +1,159 @@
+﻿@model List<ShoppingWebbl5.Models.Category>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h6>Bộ sưu tập mùa hè</h6>
+                            <h2>Bộ sưu tập mùa hè - 2022</h2>
+                            <p>Một nhãn hiệu chuyên gia tạo ra các mặt hàng thiết yếu sang trọng. Được chế tác theo phương pháp đặc biệt với cam kết bền bỉ về chất lượng vượt trội.</p>
+                            <a href="./shop.html" class="primary-btn">Mua ngay <span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero__items set-bg" data-setbg="img/hero/hero-2.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h6>Bộ sưu tập mùa hè</h6>
+                            <h2>Bộ sưu tập mùa hè - 2022</h2>
+                            <p>Một nhãn hiệu chuyên gia tạo ra các mặt hàng thiết yếu sang trọng. Được chế tác theo phương pháp đặc biệt với cam kết bền bỉ về chất lượng vượt trội.</p>
+                            <a href="./shop.html" class="primary-btn">Mua ngay <span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Product Section Begin -->
+<section class="product spad" style="margin-top: 50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*">Bán chạy nhất</li>
+                    <li data-filter=".new-arrivals">Sản phẩm mới</li>
+                    <li data-filter=".hot-sales">Giảm giá</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row product__filter">
+            @foreach (Category category in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="@category.Image">
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li>
+                                    <a href="#"><img src="img/icon/compare.png" alt=""> </a>
+                                </li>
+                                <li><a href="./shop-details.html"><img src="img/icon/search.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>@category.CategoryName</h6>
+                            <a href="/Home/List/@category.Id" class="add-cart">+ List product</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="instagram__pic">
+                    <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-1.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-2.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-3.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-4.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-5.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-6.jpg"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="instagram__text">
+                    <h2>Instagram</h2>
+                    <p>Theo dõi chúng tôi qua kênh Instagram</p>
+                    <h3>#Male_Fashion</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram Section End -->
+<!-- Latest Blog Section Begin -->
+<section class="latest spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Tin mới nhất</span>
+                    <h2>Xu hướng thời trang mới</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-1.jpg"></div>
+                    <div class="blog__item__text">
+                        <span><img src="img/icon/calendar.png" alt=""> 16 tháng 2 2022</span>
+                        <h5>Style Mùa Hè Giúp Bạn Thêm Năng Động - Cá Tính.</h5>
+                        <a href="./blog-details.html">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
+                    <div class="blog__item__text">
+                        <span><img src="img/icon/calendar.png" alt=""> 21 tháng 2 2022</span>
+                        <h5>Top 5 xu hướng thời trang nam mùa hè 2022</h5>
+                        <a href="./blog-details.html">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-3.jpg"></div>
+                    <div class="blog__item__text">
+                        <span><img src="img/icon/calendar.png" alt=""> 28 tháng 2 2022</span>
+                        <h5>Thời trang đi biển thật phong cách dành cho phái mạnh</h5>
+                        <a href="./blog-details.html">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

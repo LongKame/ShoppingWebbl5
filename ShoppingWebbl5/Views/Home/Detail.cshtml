@@ -1,0 +1,274 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using ShoppingWebbl5.Models
+@model Product
+
+<section class="shop-details">
+    <div class="product__details__pic">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__breadcrumb">
+                        <a href="./index.html">Trang chủ</a>
+                        <a href="./shop.html">Cửa hàng</a>
+                        <span>Thông tin chi tiết sản phẩm</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+
+                <div class="col-lg-6 col-md-9" style="text-align:center">
+                    <div class="tab-content" style="text-align:center">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img style="text-align:center; margin-left:80%;" src="@Model.Image" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="product__details__content">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product__details__text">
+                        <h4>@Model.ProductName</h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <span> - 5 Đánh giá</span>
+                        </div>
+                        <h3>$@Model.Price <span></span></h3>
+                        <p>
+                            @Model.Description
+                        </p>
+                        <div class="product__details__option">
+                            <div class="product__details__option__size">
+                                <span>Size:</span>
+                                <label for="xxl">
+                                    xxl
+                                    <input type="radio" id="xxl">
+                                </label>
+                                <label class="active" for="xl">
+                                    xl
+                                    <input type="radio" id="xl">
+                                </label>
+                                <label for="l">
+                                    l
+                                    <input type="radio" id="l">
+                                </label>
+                                <label for="sm">
+                                    s
+                                    <input type="radio" id="sm">
+                                </label>
+                            </div>
+                            <div class="product__details__option__color">
+                                <span>Màu sắc:</span>
+                                <label class="c-1" for="sp-1">
+                                    <input type="radio" id="sp-1">
+                                </label>
+                                <label class="c-2" for="sp-2">
+                                    <input type="radio" id="sp-2">
+                                </label>
+                                <label class="c-3" for="sp-3">
+                                    <input type="radio" id="sp-3">
+                                </label>
+                                <label class="c-4" for="sp-4">
+                                    <input type="radio" id="sp-4">
+                                </label>
+                                <label class="c-9" for="sp-9">
+                                    <input type="radio" id="sp-9">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="product__details__cart__option">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="1">
+                                </div>
+                            </div>
+                            <a href="/Home/Cart/@Model.Id" class="primary-btn">thêm vào giỏ hàng</a>
+                        </div>
+                        <div class="product__details__btns__option">
+                            <a href="#"><i class="fa fa-heart"></i> thêm vào danh sách yêu thích</a>
+                            <a href="#"><i class="fa fa-exchange"></i> Thêm vào để so sánh</a>
+                        </div>
+                        <div class="product__details__last__option">
+                            <h5><span>Đảm bảo thanh toán an toàn</span></h5>
+                            <img src="img/shop-details/details-payment.png" alt="">
+                            <ul>
+                                <li><span>SKU:</span> 3812912</li>
+                                <li><span>Thể loại:</span> Quần áo</li>
+                                <li><span>Tag:</span> Quần áo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-5" role="tab">
+                                    Chi tết sản
+                                    phẩm
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Mô tả sản phẩm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">Đánh giá</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <p class="note">
+                                        Áo sweater vải thu đông co dãn, dày dặn mềm mịn form rộng phong
+                                        cách Unisex
+                                    </p>
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Xuất xứ: Levi’s®</h5>
+                                        <p>
+                                            Được thành lập năm 1873, Levi’s® được thế giới biết đến & ngợi khen bởi
+                                            những sản
+                                            phẩn jeans đạt chuẩn mực trong thiết kế. Chúng trở thành những sản phẩm
+                                            thành công nhất, được công nhận nhiều nhất.
+                                            Với tư cách là nhà tiên phong đi đầu trong lĩnh vực jeans, thương hiệu
+                                            Levi’s® tiếp tục khẳng định vị thế vững chắc trên đấu trường thời trang
+                                            bằng dải sản phẩm mở rộng tuyệt đối vô cùng phong phú, đầy đủ cả những
+                                            mẫu mã “nòng cốt” như dòng 501® lừng danh,
+                                            dòng jeans tân thời với các form dáng hiện đại, đến các sản phẩm cao
+                                            cấp.
+                                        </p>
+                                        <p>Tinh thần thương hiệu: Tỉ mỉ - Đổi mới - Bền bỉ</p>
+                                    </div>
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Áo Sweater</h5>
+                                        <p>
+                                            Áo form rộng mang phong cách thời trang thời thượng các bạn trẻ; đặc
+                                            biệt không những giúp bạn giữ ấm trong mùa lạnh mà còn có thể chống
+                                            nắng, chống gió, chống bụi, chống rét, chống tia UV cực tốt, rất tiện
+                                            lợi nhé!!! (Được sử dụng nhiều trong dịp Lễ hội, Đi chơi, Da ngoại, Dạo
+                                            phố, Du lịch…).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Thông tin sản phẩm</h5>
+                                        <p>Màu sắc: Xem thêm màu tại phân loại</p>
+                                        <p>Thành phần: Thun nỉ thu đông cao cấp thoáng khí</p>
+                                        <p>Form: form rộng trẻ trung, Unisex</p>
+                                        <p>Xuất xứ: Việt Nam: </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-7" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="container height-vh d-flex justify-content-center align-items-center">
+                                        <div class="col-12 col-md-10 col-lg-8 col-xl-7 text-center">
+                                            <div class="p-5 card2">
+                                                <div class="row d-flex justify-content-center">
+                                                    <div class="col-md-4 d-flex flex-column">
+                                                        <div class="rating-box">
+                                                            <h1 class="mt-4">4.5</h1>
+                                                            <h6 class="mt-0">Trên 254 đánh giá</h6>
+                                                        </div>
+                                                        <div>
+                                                            <span class="fa fa-star star-active mx-1"></span>
+                                                            <span class="fa fa-star star-active mx-1"></span>
+                                                            <span class="fa fa-star star-active mx-1"></span>
+                                                            <span class="fa fa-star star-active mx-1"></span>
+                                                            <span class="fa fa-star star-inactive mx-1"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="rating-bar0 justify-content-center">
+                                                            <table class="text-left mx-auto">
+                                                                <tr>
+                                                                    <td class="rating-label">5</td>
+                                                                    <td class="rating-bar">
+                                                                        <div class="bar-container">
+                                                                            <div class="bar-5 bar"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-right pt-0">98</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="rating-label">4</td>
+                                                                    <td class="rating-bar">
+                                                                        <div class="bar-container">
+                                                                            <div class="bar-4 bar"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-right pt-0">89</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="rating-label">3</td>
+                                                                    <td class="rating-bar">
+                                                                        <div class="bar-container">
+                                                                            <div class="bar-3 bar"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-right pt-0">55</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="rating-label">2</td>
+                                                                    <td class="rating-bar">
+                                                                        <div class="bar-container">
+                                                                            <div class="bar-2 bar"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-right pt-0">10</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="rating-label">1</td>
+                                                                    <td class="rating-bar">
+                                                                        <div class="bar-container">
+                                                                            <div class="bar-1 bar"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-right pt-0">3</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
