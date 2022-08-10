@@ -42,13 +42,10 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li><a href="#">Áo (20)</a></li>
-                                                <li><a href="#">Quần (20)</a></li>
-                                                <li><a href="#">Giày (20)</a></li>
-                                                <li><a href="#">Kính mắt (20)</a></li>
-                                                <li><a href="#">Thắt lưng (20)</a></li>
-                                                <li><a href="#">Phụ kiện (20)</a></li>
-                                                <li><a href="#">Đồng hồ (20)</a></li>
+                                                @foreach (var item in ViewBag.Categories)
+                                                {
+                                                    <li><a href="@item.Id">@item.CategoryName</a></li>
+                                                }
                                             </ul>
                                         </div>
                                     </div>
@@ -62,10 +59,10 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
                                             <ul>
-                                                <li><a href="#">Louis Vuitton</a></li>
-                                                <li><a href="#">Chanel</a></li>
-                                                <li><a href="#">Hermes</a></li>
-                                                <li><a href="#">Gucci</a></li>
+                                                @foreach (var item in ViewBag.Brands)
+                                                {
+                                                    <li><a href="@item.Id">@item.BrandName</a></li>
+                                                }
                                             </ul>
                                         </div>
                                     </div>

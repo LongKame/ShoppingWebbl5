@@ -147,3 +147,5 @@ C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Shoppin
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\ref\ShoppingWebbl5.dll
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\ShoppingWebbl5.pdb
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\ShoppingWebbl5.genruntimeconfig.cache
+C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Shared\AdminLayout.cshtml.g.cs
+C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Home\Administrators.cshtml.g.cs

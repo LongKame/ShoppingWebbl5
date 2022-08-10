@@ -33,6 +33,15 @@ namespace ShoppingWebbl5.Controllers
             var list = (from product in shoppingWebbl5Context.Products
                         where product.IdCategory == id
                         select product).ToList();
+
+            var cate = (from category in shoppingWebbl5Context.Categories
+                        select category).ToList();
+            var brand = (from bra in shoppingWebbl5Context.Brands
+                         select bra).ToList();
+
+            ViewBag.Categories = cate;
+            ViewBag.Brands = brand;
+
             if (page > 0)
             {
                 page = page;
@@ -50,6 +59,13 @@ namespace ShoppingWebbl5.Controllers
             ViewBag.numberPage = (int)Math.Ceiling(numberPage) + 1;
             var dataPro = list.OrderBy(s => s.Id).Skip(start).Take(limit);
             return View(dataPro.ToList());
+        }
+
+
+        public IActionResult Administrators()
+        {
+
+            return View();
         }
 
 
