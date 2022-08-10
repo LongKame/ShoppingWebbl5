@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Computer\\source\\repos\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj": {}
+    "C:\\Users\\Computer\\Desktop\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Computer\\source\\repos\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj": {
+    "C:\\Users\\Computer\\Desktop\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Computer\\source\\repos\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj",
+        "projectUniqueName": "C:\\Users\\Computer\\Desktop\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj",
         "projectName": "ShoppingWebbl5",
-        "projectPath": "C:\\Users\\Computer\\source\\repos\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj",
+        "projectPath": "C:\\Users\\Computer\\Desktop\\ShoppingWebbl5\\ShoppingWebbl5\\ShoppingWebbl5.csproj",
         "packagesPath": "C:\\Users\\Computer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Computer\\source\\repos\\ShoppingWebbl5\\ShoppingWebbl5\\obj\\",
+        "outputPath": "C:\\Users\\Computer\\Desktop\\ShoppingWebbl5\\ShoppingWebbl5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Computer\\AppData\\Roaming\\NuGet\\NuGet.Config",
