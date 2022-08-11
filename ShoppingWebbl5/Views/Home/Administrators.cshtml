@@ -1,4 +1,7 @@
-﻿@model List<ShoppingWebbl5.Models.Product>
+﻿Skip to content
+
+
+@model List<ShoppingWebbl5.Models.Product>
 
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -249,7 +252,9 @@
         <div class="card card-tasks">
             <div class="card-header ">
                 <h4 class="card-title">Tasks</h4>
-                <p class="card-category">To Do List</p>
+                <button type="button" data-toggle="tooltip" class="btn btn-success" id="#addModalCenter" onclick="">
+                    Success
+                </button>
             </div>
             <div class="card-body ">
                 <div class="table-full-width">
@@ -304,20 +309,32 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="card-footer ">
-                <div class="stats">
-                    <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
 
     <script>
+
         function openEdit(selectedItem) {
-            const data = JSON.stringify({
-                "selectedItems": $('#sel').val()
-            });
             $.ajax({
                 url: "PopupEdit/" + selectedItem,
                 type: "GET",
@@ -332,7 +349,6 @@
                             obj = res.data;
                         else if (typeof res === 'string')
                             obj = JSON.parse(res).data;
-
                         $('#id').val(obj.id);
                         $('#name').val(obj.productName);
                         $('#quantity').val(obj.quantity);
@@ -370,7 +386,6 @@
                 dataType: 'JSON',
                 url: "/Home/UpdateProductById",
                 data: { product: product },
-
                 success: function (result) {
                     $('#exampleModalCenter').modal('hide');
                     $('#id').val("");
@@ -396,30 +411,60 @@
         }
 
         function openDelete(selectedItem) {
-            var ans = confirm("Are you sure you want to delete this Record?");
-            if (ans) {
-                $.ajax({
-                    url: "/Home/DeleteProductById/" + selectedItem,
-                    type: "POST",
-                    dataType: "json",
-                    success: function (result) {
-                        alert("Successfully");
-                        location.reload();
-                    },
-                    error: function (errormessage) {
-                        alert("Fail");
+            const data = JSON.stringify({
+                "selectedItems": $('#sel').val()
+            });
+            $.ajax({
+                url: "PopupDelete/" + selectedItem,
+                type: "GET",
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                data: { id: selectedItem },
+                success: function (res) {
+                    if (res.data != null) {
+                        var obj;
+                        if (typeof res === 'object')
+                            obj = res.data;
+                        else if (typeof res === 'string')
+                            obj = JSON.parse(res).data;
+
+                        $('#id').val(obj.id)
+                        $('#deleteModalCenter').modal('show')
+                        document.getElementById('#deleteModalCenter')
                     }
-                });
-            }
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
         }
 
+        function Delete() {
+            var id = document.getElementById('id').value
+            console.log(id);
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                url: "/Home/DeleteProductById",
+                data: { id: id },
 
-
-
-
-
-
-
+                success: function (result) {
+                    $('#deleteModalCenter').modal('hide');
+                    $('#id').val("");
+                    console.log(result);
+                    if (result.message === true) {
+                        alert("Successfully");
+                        location.reload();
+                    } else {
+                        alert("Fail");
+                    }
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
     </script>
 
 

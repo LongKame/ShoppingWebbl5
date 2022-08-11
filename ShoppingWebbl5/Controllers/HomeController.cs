@@ -29,7 +29,6 @@ namespace ShoppingWebbl5.Controllers
 
         public IActionResult List(int? id, int? page)
         {
-
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             var list = (from product in shoppingWebbl5Context.Products
                         where product.IdCategory == id
@@ -71,7 +70,18 @@ namespace ShoppingWebbl5.Controllers
             return View();
         }
 
-        public IActionResult PopupEdit(int? id)
+        public IActionResult PopupAdd()
+        {
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            List<Brand> brand = shoppingWebbl5Context.Brands.ToList();
+            List<Category> category = shoppingWebbl5Context.Categories.ToList();
+            List<Object> obj = new List<Object>();
+            obj.Add(brand);
+            obj.Add(category);
+            return Json(new { data = obj });
+        }
+
+        public IActionResult PopupEdit(int id)
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             Product product = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
@@ -79,7 +89,28 @@ namespace ShoppingWebbl5.Controllers
             {
                 ViewBag.Product = product;
             }
+            return Json(new { data = product });
+        }
 
+        public IActionResult PopupView(int? id)
+        {
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            var product = (from pro in shoppingWebbl5Context.Products
+                           join bra in shoppingWebbl5Context.Brands on pro.IdBrand equals bra.Id
+                           join cate in shoppingWebbl5Context.Categories on pro.IdCategory equals cate.Id
+                           where pro.Id == id
+                           select new
+                           {
+                               id = pro.Id,
+                               productName = pro.ProductName,
+                               image = pro.Image,
+                               quantity = pro.Quantity,
+                               price = pro.Price,
+                               category = cate.CategoryName,
+                               brand = bra.BrandName,
+                               original = pro.Original,
+                               description = pro.Description
+                           });
             return Json(new { data = product });
         }
 
@@ -91,14 +122,22 @@ namespace ShoppingWebbl5.Controllers
             {
                 ViewBag.Product = product;
             }
+            return Json(new { data = product });
+        }
 
-            return Json(new { data = product.Id });
+        public JsonResult Add(Product product)
+        {
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            if (product != null)
+            {
+                shoppingWebbl5Context.Products.Add(product);
+                shoppingWebbl5Context.SaveChanges();
+            }
+            return Json(new { Message = true });
         }
 
         public JsonResult UpdateProductById(Product product)
         {
-
-
             Product pro = null;
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             if (product != null)
@@ -116,14 +155,11 @@ namespace ShoppingWebbl5.Controllers
                 pro.IdCategory = product.IdCategory;
                 shoppingWebbl5Context.SaveChanges();
             }
-
             return Json(new { Message = true });
         }
 
         public JsonResult DeleteProductById(int id)
         {
-
-
             Product pro = null;
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             pro = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
@@ -132,7 +168,6 @@ namespace ShoppingWebbl5.Controllers
                 shoppingWebbl5Context.Products.Remove(pro);
                 shoppingWebbl5Context.SaveChanges();
             }
-
             return Json(new { Message = true });
         }
 
