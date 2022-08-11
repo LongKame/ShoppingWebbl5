@@ -71,7 +71,7 @@ namespace ShoppingWebbl5.Controllers
             return View();
         }
 
-        public JsonResult PopupEdit(int? id)
+        public IActionResult PopupEdit(int? id)
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             Product product = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
@@ -80,11 +80,25 @@ namespace ShoppingWebbl5.Controllers
                 ViewBag.Product = product;
             }
 
-            return Json(new { data = product }, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+            return Json(new { data = product });
         }
 
-        public IActionResult UpdateProductById(Product product)
+        public IActionResult PopupDelete(int? id)
         {
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            Product product = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
+            if (product != null)
+            {
+                ViewBag.Product = product;
+            }
+
+            return Json(new { data = product.Id });
+        }
+
+        public JsonResult UpdateProductById(Product product)
+        {
+
+
             Product pro = null;
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             if (product != null)
@@ -102,7 +116,24 @@ namespace ShoppingWebbl5.Controllers
                 pro.IdCategory = product.IdCategory;
                 shoppingWebbl5Context.SaveChanges();
             }
-            return View(product);
+
+            return Json(new { Message = true });
+        }
+
+        public JsonResult DeleteProductById(int id)
+        {
+
+
+            Product pro = null;
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            pro = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
+            if (pro != null)
+            {
+                shoppingWebbl5Context.Products.Remove(pro);
+                shoppingWebbl5Context.SaveChanges();
+            }
+
+            return Json(new { Message = true });
         }
 
         public IActionResult Detail(int? id)

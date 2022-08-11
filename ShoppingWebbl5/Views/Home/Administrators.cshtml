@@ -290,9 +290,13 @@
                                                 </button>
                                             </div>*@
                                         <div class="form-button-action">
-                                            <button type="button" data-toggle="tooltip" class="btn btn-link <btn-simple-primary" title="Edit" id="#exampleModalCenter" onclick="process(@product.Id);">
+                                            <button type="button" data-toggle="tooltip" class="btn btn-link <btn-simple-primary" title="Edit" id="#exampleModalCenter" onclick="openEdit(@product.Id);">
                                                 <i class="la la-edit"></i>
                                             </button>
+                                            <button type="button" data-toggle="tooltip" class="btn btn-link btn-simple-danger" title="Remove" id="#deleteModalCenter" onclick="openDelete(@product.Id);">
+                                                <i class="la la-times"></i>
+                                            </button>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -310,38 +314,116 @@
     </div>
 
     <script>
-
-        function process(selectedItem) {
+        function openEdit(selectedItem) {
             const data = JSON.stringify({
                 "selectedItems": $('#sel').val()
             });
             $.ajax({
                 url: "PopupEdit/" + selectedItem,
                 type: "GET",
-                contentType: "application/json",
+                dataType: 'json',
+                processData: false,
+                contentType: false,
                 data: { id: selectedItem },
                 success: function (res) {
                     if (res.data != null) {
+                        var obj;
+                        if (typeof res === 'object')
+                            obj = res.data;
+                        else if (typeof res === 'string')
+                            obj = JSON.parse(res).data;
 
-                        $('#id').val("1");
-                        $('#name').val(res.ProductName);
-                        $('#quantity').val(res.Quantity);
-                        $('#price').val(res.Price);
-                        $('#original').val(res.Original);
-                        $('#image').val(res.Image);
-                        $('#brand').val(res.data.IdBrand);
-                        $('#category').val(res.data.IdCategory);
-                        console.log(res);
-                        console.log(res.Id);
+                        $('#id').val(obj.id);
+                        $('#name').val(obj.productName);
+                        $('#quantity').val(obj.quantity);
+                        $('#price').val(obj.price);
+                        $('#original').val(obj.original);
+                        $('#image').val(obj.image);
+                        $('#brand').val(obj.idBrand);
+                        $('#category').val(obj.idCategory);
                         $('#exampleModalCenter').modal('show')
                         document.getElementById('#exampleModalCenter')
                     }
                 },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
             });
         }
 
+        function Update() {
+            var product = {
+                Id: $('#id').val(),
+                ProductName: $('#name').val(),
+                Quantity: $('#quantity').val(),
+                Price: $('#price').val(),
+                Original: $('#original').val(),
+                Image: $('#image').val(),
+                IdBrand: $('#brand').val(),
+                IdCategory: $('#category').val(),
+            };
+            console.log(product.Id);
+            console.log(product);
+            val1 = "5";
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                url: "/Home/UpdateProductById",
+                data: { product: product },
+
+                success: function (result) {
+                    $('#exampleModalCenter').modal('hide');
+                    $('#id').val("");
+                    $('#name').val("");
+                    $('#quantity').val("");
+                    $('#price').val("");
+                    $('#original').val("");
+                    $('#image').val("");
+                    $('#brand').val("");
+                    $('#category').val("");
+                    console.log(result);
+                    if (result.message === true) {
+                        alert("Successfully");
+                        location.reload();
+                    } else {
+                        alert("Fail");
+                    }
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+
+        function openDelete(selectedItem) {
+            var ans = confirm("Are you sure you want to delete this Record?");
+            if (ans) {
+                $.ajax({
+                    url: "/Home/DeleteProductById/" + selectedItem,
+                    type: "POST",
+                    dataType: "json",
+                    success: function (result) {
+                        alert("Successfully");
+                        location.reload();
+                    },
+                    error: function (errormessage) {
+                        alert("Fail");
+                    }
+                });
+            }
+        }
+
+
+
+
+
+
+
 
     </script>
+
+
+
 
     @*Edit*@
 
@@ -388,7 +470,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Update</button>
+                    <button type="button" class="btn btn-primary" onclick="Update();">Update</button>
                 </div>
             </div>
         </div>
@@ -397,7 +479,7 @@
 
 
     @*Delete*@
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -406,9 +488,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <input type="hidden" class="form-control" id="id">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger" onclick="Delete();">Delete</button>
                 </div>
             </div>
         </div>
