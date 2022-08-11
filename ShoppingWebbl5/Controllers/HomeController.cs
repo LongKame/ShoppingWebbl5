@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using ShoppingWebbl5.Models;
 using System;
 using System.Collections.Generic;
@@ -64,16 +65,54 @@ namespace ShoppingWebbl5.Controllers
 
         public IActionResult Administrators()
         {
-
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            var listProduct = shoppingWebbl5Context.Products.ToList();
+            ViewBag.ListProduct = listProduct;
             return View();
         }
 
+        public JsonResult PopupEdit(int? id)
+        {
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            Product product = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
+            if (product != null)
+            {
+                ViewBag.Product = product;
+            }
+
+            return Json(new { data = product }, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+        }
+
+        public IActionResult UpdateProductById(Product product)
+        {
+            Product pro = null;
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            if (product != null)
+            {
+                pro = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == product.Id);
+            }
+            if (pro != null)
+            {
+                pro.ProductName = product.ProductName;
+                pro.Image = product.Image;
+                pro.Quantity = product.Quantity;
+                pro.Price = product.Price;
+                pro.Original = product.Original;
+                pro.IdBrand = product.IdBrand;
+                pro.IdCategory = product.IdCategory;
+                shoppingWebbl5Context.SaveChanges();
+            }
+            return View(product);
+        }
 
         public IActionResult Detail(int? id)
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             Product product = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
-            ViewBag.Product = product;
+            if (product != null)
+            {
+                ViewBag.Product = product;
+            }
             return View(product);
         }
 

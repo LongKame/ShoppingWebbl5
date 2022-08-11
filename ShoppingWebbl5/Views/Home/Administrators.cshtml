@@ -1,7 +1,16 @@
-﻿@*@model ShoppingWebbl5.Models.CheckOut*@
+﻿@model List<ShoppingWebbl5.Models.Product>
+
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewData["Title"] = "Home Page";
 }
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 
 <div class="col-md-3">
@@ -80,7 +89,7 @@
         </div>
     </div>
 </div>
-tư
+
 <div class="row">
     <div class="col-md-3">
         <div class="card">
@@ -234,46 +243,9 @@ tư
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header ">
-                <h4 class="card-title">Table</h4>
-                <p class="card-category">Users Table</p>
-            </div>
-            <div class="card-body">
-                <table class="table table-head-bg-success table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td colspan="2">Larry the Bird</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
+
+
+    <div class="col-md-12">
         <div class="card card-tasks">
             <div class="card-header ">
                 <h4 class="card-title">Tasks</h4>
@@ -284,105 +256,47 @@ tư
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input  select-all-checkbox" type="checkbox" data-select="checkbox" data-target=".task-select">
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </th>
-                                <th>Task</th>
-                                <th>Action</th>
+                                <th class="td-actions text-center">Order of list</th>
+                                <th class="td-actions text-center">ProductName</th>
+                                <th class="td-actions text-center">Image</th>
+                                <th class="td-actions text-center">Quantity</th>
+                                <th class="td-actions text-center">Price</th>
+                                <th class="td-actions text-center">Original</th>
+                                <th class="td-actions text-center">View</th>
+                                <th class="td-actions text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input task-select" type="checkbox">
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </td>
-                                <td>Planning new project structure</td>
-                                <td class="td-actions text-right">
-                                    <div class="form-button-action">
-                                        <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                            <i class="la la-edit"></i>
-                                        </button>
-                                        <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                            <i class="la la-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input task-select" type="checkbox">
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </td>
-                                <td>Update Fonts</td>
-                                <td class="td-actions text-right">
-                                    <div class="form-button-action">
-                                        <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                            <i class="la la-edit"></i>
-                                        </button>
-                                        <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                            <i class="la la-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input task-select" type="checkbox">
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </td>
-                                <td>
-                                    Add new Post
-                                </td>
-                                <td class="td-actions text-right">
-                                    <div class="form-button-action">
-                                        <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                            <i class="la la-edit"></i>
-                                        </button>
-                                        <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                            <i class="la la-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input task-select" type="checkbox">
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </td>
-                                <td>Finalise the design proposal</td>
-                                <td class="td-actions text-right">
-                                    <div class="form-button-action">
-                                        <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                            <i class="la la-edit"></i>
-                                        </button>
-                                        <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                            <i class="la la-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach (Product product in ViewBag.ListProduct)
+                            {
+                                <tr>
+                                    <td class="nr td-actions text-center"></td>
+                                    <td class="td-actions text-center">@product.ProductName</td>
+                                    <td class="td-actions text-center"><img src="@product.Image" width="60" height="80"></td>
+                                    <td class="td-actions text-center">@product.Quantity</td>
+                                    <td class="td-actions text-center">@product.Price</td>
+                                    <td class="td-actions text-center">@product.Original</td>
+                                    <td class="td-actions text-center">@product.View</td>
+                                    <td class="td-actions text-center">
+                                        @*<div class="form-button-action">
+                                                <button type="button" data-toggle="modal" data-target="#editModal" title="Edit" class="btn btn-link <btn-simple-primary">
+                                                    <i class="la la-edit"></i>
+                                                </button>
+                                                <button type="button" data-toggle="modal" data-target="#deleteModal" title="Remove" class="btn btn-link btn-simple-danger">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                                <button type="button" data-toggle="modal" data-target="#exampleModal" title="View" class="btn btn-link btn-simple-danger">
+                                                    <i class="la la-eye"></i>
+                                                </button>
+                                            </div>*@
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" class="btn btn-link <btn-simple-primary" title="Edit" id="#exampleModalCenter" onclick="process(@product.Id);">
+                                                <i class="la la-edit"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -394,4 +308,117 @@ tư
             </div>
         </div>
     </div>
+
+    <script>
+
+        function process(selectedItem) {
+            const data = JSON.stringify({
+                "selectedItems": $('#sel').val()
+            });
+            $.ajax({
+                url: "PopupEdit/" + selectedItem,
+                type: "GET",
+                contentType: "application/json",
+                data: { id: selectedItem },
+                success: function (res) {
+                    if (res.data != null) {
+
+                        $('#id').val("1");
+                        $('#name').val(res.ProductName);
+                        $('#quantity').val(res.Quantity);
+                        $('#price').val(res.Price);
+                        $('#original').val(res.Original);
+                        $('#image').val(res.Image);
+                        $('#brand').val(res.data.IdBrand);
+                        $('#category').val(res.data.IdCategory);
+                        console.log(res);
+                        console.log(res.Id);
+                        $('#exampleModalCenter').modal('show')
+                        document.getElementById('#exampleModalCenter')
+                    }
+                },
+            });
+        }
+
+
+    </script>
+
+    @*Edit*@
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="recipient-name" class="col-form-label">Id:</label>
+                                        <input type="text" class="form-control" id="id">
+                                        <label for="message-text" class="col-form-label">ProductName:</label>
+                                        <input type="text" class="form-control" id="name">
+                                        <label for="message-text" class="col-form-label">Quantity:</label>
+                                        <input type="text" class="form-control" id="quantity">
+                                        <label for="message-text" class="col-form-label">Price:</label>
+                                        <input type="text" class="form-control" id="price">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="message-text" class="col-form-label">Original:</label>
+                                        <input type="text" class="form-control" id="original">
+                                        <label for="message-text" class="col-form-label">Image:</label>
+                                        <input type="text" class="form-control" id="image">
+                                        <label for="message-text" class="col-form-label">Brand:</label>
+                                        <input type="text" class="form-control" id="brand">
+                                        <label for="message-text" class="col-form-label">Category:</label>
+                                        <input type="text" class="form-control" id="category">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @*Delete*@
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var a = document.getElementsByClassName("nr");
+        for (var i = 0; i < a.length; i++) {
+            a[i].innerHTML = (i + 1);
+        }
+    </script>
+
 </div>
