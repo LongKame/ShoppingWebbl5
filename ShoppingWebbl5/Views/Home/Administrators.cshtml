@@ -1,7 +1,4 @@
-﻿Skip to content
-
-
-@model List<ShoppingWebbl5.Models.Product>
+﻿@model List<ShoppingWebbl5.Models.Product>
 
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -15,83 +12,85 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<div class="col-md-3">
-    <div class="card card-stats card-warning">
-        <div class="card-body ">
-            <div class="row">
-                <div class="col-5">
-                    <div class="icon-big text-center">
-                        <i class="la la-users"></i>
+@*<div class="col-md-3">
+        <div class="card card-stats card-warning">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="icon-big text-center">
+                            <i class="la la-users"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="col-7 d-flex align-items-center">
-                    <div class="numbers">
-                        <p class="card-category">Visitors</p>
-                        <h4 class="card-title">1,294</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-3">
-    <div class="card card-stats card-success">
-        <div class="card-body ">
-            <div class="row">
-                <div class="col-5">
-                    <div class="icon-big text-center">
-                        <i class="la la-bar-chart"></i>
-                    </div>
-                </div>
-                <div class="col-7 d-flex align-items-center">
-                    <div class="numbers">
-                        <p class="card-category">Sales</p>
-                        <h4 class="card-title">$ 1,345</h4>
+                    <div class="col-7 d-flex align-items-center">
+                        <div class="numbers">
+                            <p class="card-category">Visitors</p>
+                            <h4 class="card-title">1,294</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="col-md-3">
-    <div class="card card-stats card-danger">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-5">
-                    <div class="icon-big text-center">
-                        <i class="la la-newspaper-o"></i>
+    <div class="col-md-3">
+        <div class="card card-stats card-success">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="icon-big text-center">
+                            <i class="la la-bar-chart"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="col-7 d-flex align-items-center">
-                    <div class="numbers">
-                        <p class="card-category">Subscribers</p>
-                        <h4 class="card-title">1303</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-3">
-    <div class="card card-stats card-primary">
-        <div class="card-body ">
-            <div class="row">
-                <div class="col-5">
-                    <div class="icon-big text-center">
-                        <i class="la la-check-circle"></i>
-                    </div>
-                </div>
-                <div class="col-7 d-flex align-items-center">
-                    <div class="numbers">
-                        <p class="card-category">Order</p>
-                        <h4 class="card-title">576</h4>
+                    <div class="col-7 d-flex align-items-center">
+                        <div class="numbers">
+                            <p class="card-category">Sales</p>
+                            <h4 class="card-title">$ 1,345</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="col-md-3">
+        <div class="card card-stats card-danger">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="icon-big text-center">
+                            <i class="la la-newspaper-o"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 d-flex align-items-center">
+                        <div class="numbers">
+                            <p class="card-category">Subscribers</p>
+                            <h4 class="card-title">1303</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stats card-primary">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="icon-big text-center">
+                            <i class="la la-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 d-flex align-items-center">
+                        <div class="numbers">
+                            <p class="card-category">Order</p>
+                            <h4 class="card-title">576</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
 
 <div class="row">
     <div class="col-md-3">
@@ -252,7 +251,7 @@
         <div class="card card-tasks">
             <div class="card-header ">
                 <h4 class="card-title">Tasks</h4>
-                <button type="button" data-toggle="tooltip" class="btn btn-success" id="#addModalCenter" onclick="">
+                <button type="button" class="btn btn-success" id="#addModalCenter" onclick="openAdd()">
                     Success
                 </button>
             </div>
@@ -332,7 +331,23 @@
         </div>
     </div>
 
+
+    <div style="background-color:lightgreen;margin-left:20px;margin-bottom:20px" class="toast show" id="toastX">
+        <div style="background-color:lightgreen;" class="toast-header">
+        </div>
+        <div class="toast-body">
+            <p>Successfully</p>
+        </div>
+    </div>
+
+
     <script>
+
+
+
+        window.onload = function () {
+            $("#toastX").hide();
+        };
 
         function openEdit(selectedItem) {
             $.ajax({
@@ -366,7 +381,6 @@
                 }
             });
         }
-
         function Update() {
             var product = {
                 Id: $('#id').val(),
@@ -398,8 +412,10 @@
                     $('#category').val("");
                     console.log(result);
                     if (result.message === true) {
-                        alert("Successfully");
-                        location.reload();
+                        $("#toastX").show();
+                        setTimeout(() => {
+                            $("#toastX").toast('show')
+                        }, 1000);
                     } else {
                         alert("Fail");
                     }
@@ -409,7 +425,6 @@
                 }
             });
         }
-
         function openDelete(selectedItem) {
             const data = JSON.stringify({
                 "selectedItems": $('#sel').val()
@@ -428,7 +443,6 @@
                             obj = res.data;
                         else if (typeof res === 'string')
                             obj = JSON.parse(res).data;
-
                         $('#id').val(obj.id)
                         $('#deleteModalCenter').modal('show')
                         document.getElementById('#deleteModalCenter')
@@ -439,7 +453,6 @@
                 }
             });
         }
-
         function Delete() {
             var id = document.getElementById('id').value
             console.log(id);
@@ -448,14 +461,15 @@
                 dataType: 'JSON',
                 url: "/Home/DeleteProductById",
                 data: { id: id },
-
                 success: function (result) {
                     $('#deleteModalCenter').modal('hide');
                     $('#id').val("");
                     console.log(result);
                     if (result.message === true) {
-                        alert("Successfully");
-                        location.reload();
+                        $("#toastX").show();
+                        setTimeout(() => {
+                            $("#toastX").toast('show')
+                        }, 1000);
                     } else {
                         alert("Fail");
                     }
@@ -466,8 +480,6 @@
             });
         }
     </script>
-
-
 
 
     @*Edit*@
@@ -541,6 +553,28 @@
             </div>
         </div>
     </div>
+
+
+    @*Add*@
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="Add();">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script type="text/javascript">
         var a = document.getElementsByClassName("nr");
