@@ -73,12 +73,21 @@ namespace ShoppingWebbl5.Controllers
         public IActionResult PopupAdd()
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
-            List<Brand> brand = shoppingWebbl5Context.Brands.ToList();
-            List<Category> category = shoppingWebbl5Context.Categories.ToList();
-            List<Object> obj = new List<Object>();
-            obj.Add(brand);
-            obj.Add(category);
-            return Json(new { data = obj });
+            //List<Brand> brand = shoppingWebbl5Context.Brands.ToList();
+            //List<Category> category = shoppingWebbl5Context.Categories.ToList();
+            //List<Brand> bra = new List<Brand>();
+            //var obj = new List<Object>();
+            //obj.Add(brand);
+            //obj.Add(category);
+            //return Json(new { data = obj });
+
+
+            TwoLists lists;
+            lists.brands = shoppingWebbl5Context.Brands.ToList();
+            lists.categories = shoppingWebbl5Context.Categories.ToList();
+            return Json(new { lists }); ;
+
+
         }
 
         public IActionResult PopupEdit(int id)
