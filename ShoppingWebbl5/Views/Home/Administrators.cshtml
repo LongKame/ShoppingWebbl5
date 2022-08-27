@@ -1,5 +1,4 @@
-﻿@model List<ShoppingWebbl5.Models.Product>
-
+﻿@model IEnumerable<ShoppingWebbl5.Models.Product>
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
     ViewData["Title"] = "Home Page";
@@ -80,17 +79,6 @@
                                     <td class="td-actions text-center">@product.Original</td>
                                     <td class="td-actions text-center">@product.View</td>
                                     <td class="td-actions text-center">
-                                        @*<div class="form-button-action">
-                                                <button type="button" data-toggle="modal" data-target="#editModal" title="Edit" class="btn btn-link <btn-simple-primary">
-                                                    <i class="la la-edit"></i>
-                                                </button>
-                                                <button type="button" data-toggle="modal" data-target="#deleteModal" title="Remove" class="btn btn-link btn-simple-danger">
-                                                    <i class="la la-times"></i>
-                                                </button>
-                                                <button type="button" data-toggle="modal" data-target="#exampleModal" title="View" class="btn btn-link btn-simple-danger">
-                                                    <i class="la la-eye"></i>
-                                                </button>
-                                            </div>*@
                                         <div class="form-button-action">
                                             <button type="button" data-toggle="tooltip" class="btn btn-link <btn-simple-primary" title="Edit" id="#exampleModalCenter" onclick="openEdit(@product.Id);">
                                                 <i class="la la-edit"></i>
@@ -106,25 +94,51 @@
                         </tbody>
                     </table>
                 </div>
+
+
+
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
+                        @{
+                            int numberPage = (int)ViewBag.numberPage;
+                            int pageCurrent = ViewBag.pageCurrent;
+                            if (pageCurrent > 1)
+                            {
+                                int prePage = pageCurrent - 1;
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=@prePage" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                            }
+                            int i;
+                            for (i = 1; i < numberPage; i++)
+                            {
+                                if (i == pageCurrent)
+                                {
+                                    <li class="page-item active"><a class="page-link" href="?page=@i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li class="page-item"><a class="page-link" href="?page=@i">@i</a></li>
+                                }
+                            }
+                            if (pageCurrent >= 1 && pageCurrent < numberPage)
+                            {
+                                int nextPage = pageCurrent + 1;
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=@nextPage" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </nav>
+
+
             </div>
         </div>
     </div>
@@ -142,14 +156,9 @@
 
 
     <script>
-
-
-
         window.onload = function () {
             $("#toastX").hide();
         };
-
-
 
         function openAdd() {
             var count = 0;
@@ -165,13 +174,6 @@
                     if (res.data != null) {
                         console.log(res.data.length);
                         var obj = JSON.parse(res);
-                        //obj.brands.forEach(function (entry) {
-                        //    console.log(entry);
-                        //});
-                        //obj.categories.forEach(function (entry) {
-                        //    console.log(entry);
-                        //});
-
                         console.log(obj.brands);
                         console.log(obj.categories);
 
@@ -339,7 +341,7 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <label for="recipient-name" class="col-form-label">Id:</label>
-                                        <input type="text" class="form-control" id="id">
+                                        <input type="text" readonly class="form-control" id="id">
                                         <label for="message-text" class="col-form-label">ProductName:</label>
                                         <input type="text" class="form-control" id="name">
                                         <label for="message-text" class="col-form-label">Quantity:</label>

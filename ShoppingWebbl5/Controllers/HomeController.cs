@@ -50,7 +50,7 @@ namespace ShoppingWebbl5.Controllers
             {
                 page = 1;
             }
-            int limit = 2;
+            int limit = 1;
             int start = (int)(page - 1) * limit;
             int totalProduct = list.Count();
             ViewBag.totalProduct = totalProduct;
@@ -62,32 +62,39 @@ namespace ShoppingWebbl5.Controllers
         }
 
 
-        public IActionResult Administrators()
+        public IActionResult Administrators(int? page)
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             var listProduct = shoppingWebbl5Context.Products.ToList();
-            ViewBag.ListProduct = listProduct;
+
+            if (page > 0)
+            {
+                page = page;
+            }
+            else
+            {
+                page = 1;
+            }
+            int limit = 1;
+            int start = (int)(page - 1) * limit;
+            int totalProduct = listProduct.Count();
+            ViewBag.totalProduct = totalProduct;
+            ViewBag.pageCurrent = page;
+            float numberPage = (totalProduct / limit);
+            ViewBag.numberPage = (int)Math.Ceiling(numberPage) + 1;
+            var dataPro = listProduct.OrderBy(s => s.Id).Skip(start).Take(limit);
+            ViewBag.ListProduct = dataPro.ToList();
             return View();
+
         }
 
         public IActionResult PopupAdd()
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
-            //List<Brand> brand = shoppingWebbl5Context.Brands.ToList();
-            //List<Category> category = shoppingWebbl5Context.Categories.ToList();
-            //List<Brand> bra = new List<Brand>();
-            //var obj = new List<Object>();
-            //obj.Add(brand);
-            //obj.Add(category);
-            //return Json(new { data = obj });
-
-
-            TwoLists lists;
-            lists.brands = shoppingWebbl5Context.Brands.ToList();
-            lists.categories = shoppingWebbl5Context.Categories.ToList();
-            return Json(new { lists }); ;
-
-
+            TwoLists lists = null;
+            lists.Brands = shoppingWebbl5Context.Brands.ToList();
+            lists.Categories = shoppingWebbl5Context.Categories.ToList();
+            return Json(new { lists });
         }
 
         public IActionResult PopupEdit(int id)
