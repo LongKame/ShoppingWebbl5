@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ShoppingWebbl5.Models;
@@ -91,21 +92,23 @@ namespace ShoppingWebbl5.Controllers
         public IActionResult PopupAdd()
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
-            TwoLists lists = null;
-            lists.Brands = shoppingWebbl5Context.Brands.ToList();
-            lists.Categories = shoppingWebbl5Context.Categories.ToList();
-            return Json(new { lists });
+            var cate = shoppingWebbl5Context.Categories.ToList();
+            return Json(new { data = cate });
         }
 
         public IActionResult PopupEdit(int id)
         {
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             Product product = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == id);
+            Edit edit = null;
             if (product != null)
             {
-                ViewBag.Product = product;
+                Brand brand = shoppingWebbl5Context.Brands.FirstOrDefault(x => x.Id == product.IdBrand);
+                Category category = shoppingWebbl5Context.Categories.FirstOrDefault(x => x.Id == product.IdCategory);
+                edit = new Edit(product.Id, product.ProductName, product.Image, product.Quantity, product.Price, category.CategoryName, brand.BrandName, product.Original, product.Description);
+                ViewBag.Product = edit;
             }
-            return Json(new { data = product });
+            return Json(new { data = edit });
         }
 
         public IActionResult PopupView(int? id)
@@ -198,10 +201,131 @@ namespace ShoppingWebbl5.Controllers
             return View(product);
         }
 
-        public IActionResult Cart(int? id)
+        public IActionResult Cart(Product cart)
         {
+            //string? username = HttpContext.Session.GetString("username");
+            //if (username == null)
+            //{
+            //    return RedirectToAction("Login");
+            //}
 
+            List<Product> list = new List<Product>();
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            Product pro = new Product();
+            Product product = shoppingWebbl5Context.Products.FirstOrDefault(x => x.Id == cart.Id);
+            string? json = HttpContext.Session.GetString("addCart");
+            bool check = true;
+            if (json != null)
+            {
+                list = JsonConvert.DeserializeObject<List<Product>>(json);
+            }
+            else
+            {
+                list = new List<Product>();
+            }
+
+            if (list.Count == 0)
+            {
+                pro.Id = cart.Id;
+                pro.ProductName = product.ProductName;
+                pro.Image = product.Image;
+                pro.Price = product.Price;
+                pro.Quantity = cart.Quantity;
+                list.Add(pro);
+            }
+            else
+            {
+                foreach (var i in list.ToList())
+                {
+                    if (i.Id == cart.Id)
+                    {
+                        i.Id = cart.Id;
+                        i.ProductName = product.ProductName;
+                        i.Image = product.Image;
+                        i.Price = product.Price;
+                        i.Quantity += cart.Quantity;
+                        check = false;
+                    }
+                }
+                if (check == true)
+                {
+                    pro.Id = cart.Id;
+                    pro.ProductName = product.ProductName;
+                    pro.Image = product.Image;
+                    pro.Price = product.Price;
+                    pro.Quantity = cart.Quantity;
+                    list.Add(pro);
+                }
+            }
+            json = JsonConvert.SerializeObject(list);
+            HttpContext.Session.SetString("addCart", json);
+            return RedirectToAction("ViewCart");
+        }
+
+        public IActionResult ViewCart()
+        {
+            List<Product> list = new List<Product>();
+            string? json = HttpContext.Session.GetString("addCart");
+            double total = 0;
+            if (json != null)
+            {
+                list = JsonConvert.DeserializeObject<List<Product>>(json);
+                foreach (var i in list)
+                {
+                    total += (double)i.Price * i.Quantity;
+                }
+                ViewBag.Total = total;
+            }
+            else
+            {
+                list = new List<Product>();
+            }
+            return View(list);
+        }
+
+        public IActionResult RemoveCart(int? id)
+        {
+            List<Product> list = new List<Product>();
+            string? json = HttpContext.Session.GetString("addCart");
+            if (json != null)
+            {
+                list = JsonConvert.DeserializeObject<List<Product>>(json);
+            }
+            else
+            {
+                list = new List<Product>();
+            }
+
+            var item = list.SingleOrDefault(x => x.Id == id);
+
+            if (item == null)
+            {
+                ViewBag.Data = "Can not delete";
+            }
+            else
+            {
+                list.Remove(item);
+                json = JsonConvert.SerializeObject(list);
+                HttpContext.Session.SetString("addCart", json);
+            }
+            return RedirectToAction("ViewCart");
+        }
+
+        public IActionResult Login()
+        {
             return View();
+        }
+
+        public IActionResult DoLogin(Account acc)
+        {
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+            Account account = shoppingWebbl5Context.Accounts.FirstOrDefault(x => x.Email.Equals(acc.Email) && x.Password.Equals(acc.Password));
+            if (account != null)
+            {
+                HttpContext.Session.SetString("username", JsonConvert.SerializeObject(account.Username));
+                HttpContext.Session.SetString("account", JsonConvert.SerializeObject(account));
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

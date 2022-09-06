@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/AccessLayout.cshtml";
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="signin-signup">
+    <form action="/Home/DoLogin" class="sign-in-form" method="POST">
+        <h2 class="title">Sign in</h2>
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="email" name="acc.Email" placeholder="Email" value="">
+        </div>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="acc.Password" placeholder="Password" value="">
+        </div>
+        <input type="submit" value="Login" class="btn solid" />
+        <p class="social-text">Or Sign in with social platforms</p>
+        <div class="social-media">
+            <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </form>
+    <form action="UserVerify" class="sign-up-form" method="post">
+        <!--<form action="verify" class="sign-up-form" method="POST">-->
+        <h2 class="title">Sign up</h2>
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" placeholder="Username" value="">
+        </div>
+        <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email" value="">
+        </div>
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="phone" placeholder="Phone Number" value="">
+        </div>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" oninput="check()" id="pw">
+        </div>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" id="pw2">
+        </div>
+        <a href="verify"><input type="submit" class="btn" value="Sign up" /></a>
+        <p class="social-text">Or Sign up with social platforms</p>
+        <div class="social-media">
+            <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </form>
+</div>

@@ -4,16 +4,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-
-
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-
-
-
 
 <div class="row">
     <div class="col-md-4">
@@ -161,21 +154,22 @@
         };
 
         function openAdd() {
-            var count = 0;
-            var brca = [];
+            var select = document.getElementById('activity_2');
+            var options = "";
             $.ajax({
-                url: "PopupAdd",
+                url: "/Home/PopupAdd",
                 type: "GET",
-                dataType: 'json',
-                processData: false,
-                contentType: false,
+                data: "{}",
                 success: function (res) {
-                    console.log(res);
-                    if (res.data != null) {
-                        console.log(res.data.length);
-                        var obj = JSON.parse(res);
-                        console.log(obj.brands);
-                        console.log(obj.categories);
+                    console.log(res.data);
+                    console.log(res.data.length);
+
+                    if (res != null) {
+                        var s = '<option value="-1">Please select one</option>';
+                        for (var i = 0; i < res.length; i++) {
+                            s += '<option value="' + res[i].id + '">' + res[i].categoryName + '</option>';
+                        }
+                        $("#list").html(s);
 
                         $('#addModalCenter').modal('show')
                         document.getElementById('#addModalCenter')
@@ -210,8 +204,8 @@
                         $('#price').val(obj.price);
                         $('#original').val(obj.original);
                         $('#image').val(obj.image);
-                        $('#brand').val(obj.idBrand);
-                        $('#category').val(obj.idCategory);
+                        $('#brand').val(obj.brand);
+                        $('#category').val(obj.category);
                         $('#exampleModalCenter').modal('show')
                         document.getElementById('#exampleModalCenter')
                     }
@@ -234,7 +228,6 @@
             };
             console.log(product.Id);
             console.log(product);
-            val1 = "5";
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
@@ -355,9 +348,9 @@
                                         <label for="message-text" class="col-form-label">Image:</label>
                                         <input type="text" class="form-control" id="image">
                                         <label for="message-text" class="col-form-label">Brand:</label>
-                                        <input type="text" class="form-control" id="brand">
+                                        <input type="text" readonly class="form-control" id="brand">
                                         <label for="message-text" class="col-form-label">Category:</label>
-                                        <input type="text" class="form-control" id="category">
+                                        <input type="text" readonly class="form-control" id="category">
                                     </div>
                                 </div>
                             </div>
@@ -423,11 +416,22 @@
                                         <label for="message-text" class="col-form-label">Original:</label>
                                         <input type="text" class="form-control" id="original">
                                         <label for="message-text" class="col-form-label">Image:</label>
-                                        <input type="text" class="form-control" id="image">
-                                        <label for="message-text" class="col-form-label">Brand:</label>
-                                        <input type="text" class="form-control" id="brand">
-                                        <label for="message-text" class="col-form-label">Category:</label>
-                                        <input type="text" class="form-control" id="category">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                       aria-describedby="inputGroupFileAddon01">
+                                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                            </div>
+                                        </div>
+                                        <label class="col-form-label">Category:</label>
+                                        <select id="category" class="form-select">
+                                            <option value="1 selected">Hat</option>
+                                            <option value="2">Shirt</option>
+                                            <option value="3">Trousers</option>
+                                            <option value="4">Socks</option>
+                                            <option value="5">Shoes</option>
+                                            <option value="6">Bag</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -437,7 +441,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="Update();">Update</button>
+                    <button type="button" class="btn btn-success" onclick="Update();">Add</button>
                 </div>
             </div>
         </div>

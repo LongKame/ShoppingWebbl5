@@ -128,7 +128,6 @@ C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\scopedc
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\ShoppingWebbl5.TagHelpers.input.cache
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\ShoppingWebbl5.TagHelpers.output.cache
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\ShoppingWebbl5.RazorCoreGenerate.cache
-C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Home\Cart.cshtml.g.cs
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Home\Detail.cshtml.g.cs
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Home\List.cshtml.g.cs
@@ -152,3 +151,6 @@ C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\bin\Debug\net5.0\Microso
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\ShoppingWebbl5.csproj.AssemblyReference.cache
+C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Home\ViewCart.cshtml.g.cs
+C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\Computer\Desktop\ShoppingWebbl5\ShoppingWebbl5\obj\Debug\net5.0\Razor\Views\Shared\AccessLayout.cshtml.g.cs
