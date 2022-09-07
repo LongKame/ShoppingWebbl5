@@ -9,34 +9,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 <div class="row">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Users Statistics</h4>
-                <p class="card-category">
-                    Users statistics this month
-                </p>
-            </div>
-            <div class="card-body">
-                <div id="monthlyChart" class="chart chart-pie"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">2018 Sales</h4>
-                <p class="card-category">
-                    Number of products sold
-                </p>
-            </div>
-            <div class="card-body">
-                <div id="salesChart" class="chart"></div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="col-md-12">
         <div class="card card-tasks">
             <div class="card-header ">
@@ -117,7 +89,7 @@
                                     <li class="page-item"><a class="page-link" href="?page=@i">@i</a></li>
                                 }
                             }
-                            if (pageCurrent >= 1 && pageCurrent < numberPage)
+                            if (pageCurrent >= 1 && pageCurrent < numberPage - 1)
                             {
                                 int nextPage = pageCurrent + 1;
                                 <li class="page-item">
@@ -345,8 +317,9 @@
                                     <div class="col-6">
                                         <label for="message-text" class="col-form-label">Original:</label>
                                         <input type="text" class="form-control" id="original">
-                                        <label for="message-text" class="col-form-label">Image:</label>
-                                        <input type="text" class="form-control" id="image">
+                                        <!--<label for="message-text" class="col-form-label">Image:</label>-->
+                                        @*<input type="text" class="form-control" id="image">*@
+                                        <!--<img src="" width="100" height="150" id="image">-->
                                         <label for="message-text" class="col-form-label">Brand:</label>
                                         <input type="text" readonly class="form-control" id="brand">
                                         <label for="message-text" class="col-form-label">Category:</label>

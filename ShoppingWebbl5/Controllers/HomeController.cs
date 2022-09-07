@@ -25,7 +25,6 @@ namespace ShoppingWebbl5.Controllers
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
             var list = shoppingWebbl5Context.Categories.ToList();
             return View(list);
-
         }
 
         public IActionResult List(int? id, int? page)
@@ -203,11 +202,11 @@ namespace ShoppingWebbl5.Controllers
 
         public IActionResult Cart(Product cart)
         {
-            //string? username = HttpContext.Session.GetString("username");
-            //if (username == null)
-            //{
-            //    return RedirectToAction("Login");
-            //}
+            string? username = HttpContext.Session.GetString("username");
+            if (username == null)
+            {
+                return RedirectToAction("Login");
+            }
 
             List<Product> list = new List<Product>();
             ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
@@ -259,6 +258,7 @@ namespace ShoppingWebbl5.Controllers
             }
             json = JsonConvert.SerializeObject(list);
             HttpContext.Session.SetString("addCart", json);
+            HttpContext.Session.SetString("count", list.Count().ToString());
             return RedirectToAction("ViewCart");
         }
 
@@ -280,6 +280,7 @@ namespace ShoppingWebbl5.Controllers
             {
                 list = new List<Product>();
             }
+
             return View(list);
         }
 
@@ -322,10 +323,64 @@ namespace ShoppingWebbl5.Controllers
             Account account = shoppingWebbl5Context.Accounts.FirstOrDefault(x => x.Email.Equals(acc.Email) && x.Password.Equals(acc.Password));
             if (account != null)
             {
+                HttpContext.Session.SetString("role", JsonConvert.SerializeObject(account.IdRole));
                 HttpContext.Session.SetString("username", JsonConvert.SerializeObject(account.Username));
                 HttpContext.Session.SetString("account", JsonConvert.SerializeObject(account));
             }
             return RedirectToAction("Index");
+        }
+
+        public IActionResult SignOut()
+        {
+            HttpContext.Session.Remove("role");
+            HttpContext.Session.Remove("username");
+            HttpContext.Session.Remove("account");
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult CheckOut(CheckOut checkOut)
+        {
+            List<Product> list = new List<Product>();
+            Account account = new Account();
+            string? json = HttpContext.Session.GetString("addCart");
+            if (json != null)
+            {
+                list = JsonConvert.DeserializeObject<List<Product>>(json);
+            }
+            else
+            {
+                list = new List<Product>();
+            }
+
+            string? acc = HttpContext.Session.GetString("account");
+            if (acc != null)
+            {
+                account = JsonConvert.DeserializeObject<Account>(acc);
+            }
+
+            ShoppingWebbl5Context shoppingWebbl5Context = new ShoppingWebbl5Context();
+
+            foreach (var i in list)
+            {
+                CheckOut check = new CheckOut();
+                check.IdProduct = i.Id;
+                check.IdAccount = account.Id;
+                check.Quantity = i.Quantity;
+                check.Require = checkOut.Require;
+                check.Date = DateTime.Now;
+                check.Checked = false;
+                shoppingWebbl5Context.CheckOuts.Add(check);
+                shoppingWebbl5Context.SaveChanges();
+            }
+            HttpContext.Session.Remove("addCart");
+            return RedirectToAction("ViewCart");
+        }
+
+
+
+        public IActionResult Chart()
+        {
+            return View();
         }
 
         public IActionResult Privacy()

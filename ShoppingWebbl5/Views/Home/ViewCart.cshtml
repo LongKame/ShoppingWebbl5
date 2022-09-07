@@ -36,31 +36,31 @@
                         <tbody>
                             @foreach (Product p in Model)
                             {
-                            <tr>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__pic">
-                                        <img src="img/shopping-cart/cart-1.jpg" alt="">
-                                    </div>
-                                    <div class="product__cart__item__text">
-                                        <h6>@p.ProductName</h6>
-                                        <h5>120.000đ</h5>
-                                    </div>
-                                </td>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__text">
-                                        <img src="@p.Image" width="50" height="60">
-                                    </div>
-                                </td>
-                                <td class="quantity__item">
-                                    <div class="quantity">
-                                        <div class="pro-qty-2">
-                                            <input type="text" value="@p.Quantity">
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="img/shopping-cart/cart-1.jpg" alt="">
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="cart__price">@p.Price</td>
-                                <td class="cart__close"><a href="/Home/RemoveCart/@p.Id"><i class="fa fa-close"></i></a></td>
-                            </tr>
+                                        <div class="product__cart__item__text">
+                                            <h6>@p.ProductName</h6>
+                                            <h5>120.000đ</h5>
+                                        </div>
+                                    </td>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <img src="@p.Image" width="50" height="60">
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="@p.Quantity">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">@p.Price</td>
+                                    <td class="cart__close"><a href="/Home/RemoveCart/@p.Id"><i class="fa fa-close"></i></a></td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -79,20 +79,22 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="cart__discount">
-                    <h6>Mã giảm giá</h6>
-                    <form action="#">
-                        <input type="text" placeholder="Mã của bạn">
-                        <button type="submit">Sử dụng</button>
-                    </form>
-                </div>
-                <div class="cart__total">
-                    <h6>Tổng</h6>
-                    <ul>
-                        <li>Tổng cộng <span>@ViewBag.Total</span></li>
-                    </ul>
-                    <a href="#" class="primary-btn">Tiến hành thanh toán</a>
-                </div>
+                <form action="/Home/CheckOut">
+                    <div class="cart__discount">
+                        <h6>Yêu cầu riêng</h6>
+
+                        <input type="text" name="checkOut.Require" placeholder="Yêu cầu của bạn">
+                        @*<button type="submit">Sử dụng</button>*@
+
+                    </div>
+                    <div class="cart__total">
+                        <h6>Tổng</h6>
+                        <ul>
+                            <li>Tổng cộng <span>@ViewBag.Total</span></li>
+                        </ul>
+                        <input class="primary-btn" type="submit" value="Tiến hành thanh toán" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>

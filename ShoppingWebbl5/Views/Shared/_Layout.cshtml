@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+@{
+    string? username = Accessor.HttpContext.Session.GetString("username");
+    string? role = Accessor.HttpContext.Session.GetString("role");
+    string? count = Accessor.HttpContext.Session.GetString("count");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,11 +44,29 @@
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="/Home/Administrators">Admin</a>
-                                <a href="/Home/Login">Đăng nhập</a>
-                                <a href="./register.html">Đăng ký</a>
-                            </div>
+
+                            @if (username == null)
+                            {
+                                <div class="header__top__links">
+                                    <a href="/Home/Login">Đăng nhập</a>
+                                </div>
+                            }
+                            @if (username != null && role == "1")
+                            {
+                                <div class="header__top__links">
+                                    <a href="/Home/Chart">Admin</a>
+                                    <a href="#"> Welcome @username</a>
+                                    <a href="/Home/SignOut"> Đăng xuất</a>
+                                </div>
+                            }
+                            @if (username != null && role != "1")
+                            {
+                                <div class="header__top__links">
+                                    <a href="#"> Welcome @username</a>
+                                    <a href="/Home/SignOut"> Đăng xuất</a>
+                                </div>
+                            }
+
                         </div>
                     </div>
                 </div>
@@ -78,8 +103,10 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="~/img/icon/search.png" alt=""></a>
                         <a href="#"><img src="~/img/icon/heart.png" alt=""></a>
-                        <a href="./shopping-cart.html"><img src="~/img/icon/cart.png" alt=""> <span>0</span></a>
-
+                        @if (username != null && role != "1")
+                        {
+                            <a href="./shopping-cart.html"><img src="~/img/icon/cart.png" alt=""> <span>@count</span></a>
+                        }
                     </div>
                 </div>
             </div>

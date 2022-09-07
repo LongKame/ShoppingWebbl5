@@ -13,6 +13,7 @@ namespace ShoppingWebbl5.Models
         public int Quantity { get; set; }
         public string Require { get; set; }
         public DateTime Date { get; set; }
+        public bool Checked { get; set; }
 
         public virtual Account IdAccountNavigation { get; set; }
         public virtual Product IdProductNavigation { get; set; }
